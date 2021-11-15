@@ -1,0 +1,138 @@
+https://github.com/Vedika2027/Orangehrm.git
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+public class demo2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.gecko.driver", "C:\\Users\\hp\\Desktop\\seleniumjar\\geckodriver-v0.30.0-win64\\geckodriver.exe");
+		WebDriver w=new FirefoxDriver();
+       w.get("https://opensource-demo.orangehrmlive.com/index.php/admin/viewAdminModule");
+       
+       w.findElement(By.id("divLogo"));
+       
+		w.manage().window().maximize();
+		   //To open URL 
+		  w.get("https://opensource-demo.orangehrmlive.com/");
+		  
+		  // To enter username and password
+		  w.findElement(By.name("txtUsername")).sendKeys("Admin");
+		  w.findElement(By.name("txtPassword")).sendKeys("admin123");
+		  
+		  //To click on submit button
+		  w.findElement(By.name("Submit")).click();
+		  
+	       //To click on admin button
+		  w.findElement(By.xpath("//*[@id=\"menu_admin_viewAdminModule\"]/b")).click();
+		 
+		  
+		  //To click on add button
+		  w.findElement(By.id("btnAdd")).click();
+		  
+		  //To select dropdown
+		  Select s = new Select(w.findElement(By.name("systemUser[userType]")));
+		  s.selectByVisibleText("Admin");
+		  
+		  //To textfield 
+		  w.findElement(By.name("systemUser[employeeName][empName]")).sendKeys("Jasmine Morgan");
+	      w.findElement(By.name("systemUser[userName]")).sendKeys("jasmo");
+	      
+	      //To select dropdown
+	      Select s1 = new Select(w.findElement(By.name("systemUser[status]")));
+	      s1.selectByVisibleText("Enabled");
+	      
+	      //To textfield
+		  w.findElement(By.name("systemUser[password]")).sendKeys("jasmo123");
+		  w.findElement(By.name("systemUser[confirmPassword]")).sendKeys("jasmo123");
+		  
+		  //To click on save button
+		  w.findElement(By.name("btnSave")).click();
+	       
+	   /*
+	      
+		  //To search user 
+		  w.findElement(By.id("searchSystemUser_userName")).sendKeys("Jasmo");
+		  
+		  Select s2 = new Select(w.findElement(By.id("searchSystemUser_userType")));
+		  s2.selectByValue("1");
+		  
+		  w.findElement(By.id("searchSystemUser_employeeName_empName")).sendKeys("Jasmine Morgan");
+		  
+		  Select s3 = new Select(w.findElement(By.id("searchSystemUser_status")));
+		  s3.selectByValue("1");
+		  
+		  w.findElement(By.name("_search")).click();
+		 */ 
+		  //To mousehover to user management
+		  
+		  Actions A = new Actions(w);
+		  A.moveToElement(w.findElement(By.linkText("User Management"))).build().perform();
+		  
+		  w.findElement(By.linkText("Users")).click();
+		   
+		  //mousehover to Jobs
+		  Actions A1 = new Actions(w);
+		  A1.moveToElement(w.findElement(By.linkText("Job"))).build().perform();
+		  
+		  w.findElement(By.linkText("Job Titles")).click();
+		   
+		  // add job button
+		  w.findElement(By.name("btnAdd")).click();
+		  
+		  w.findElement(By.name("jobTitle[jobTitle]")).sendKeys("IT Manager13");
+		  
+		  w.findElement(By.xpath("//*[@id=\"btnSave\"]")).click(); 
+
+		  //To check box
+
+		  w.findElement(By.id("ohrmList_chkSelectRecord_22")).click(); 
+		  
+		  w.findElement(By.name("btnDelete")).click();
+		  
+		  //Thread.sleep(6000);
+		  
+		  w.findElement(By.id("dialogDeleteBtn")).click();
+		  
+		  
+		  //To pay grades
+		  
+		  Actions A3 = new Actions(w);
+	      A3.moveToElement(w.findElement(By.linkText("Job"))).build().perform();
+		  
+		  w.findElement(By.linkText("Pay Grades")).click();
+		  
+		  w.findElement(By.xpath("//*[@id=\"btnAdd\"]")).click(); 
+		  
+		  w.findElement(By.name("payGrade[name]")).sendKeys("Grade19");
+		  w.findElement(By.xpath("//*[@id=\"btnSave\"]")).click();
+		  
+		  //To add currency
+		  
+		  w.findElement(By.id("btnAddCurrency")).click();
+		  
+		  w.findElement(By.name("payGradeCurrency[currencyName]")).sendKeys("USD - United States Dollar");
+		  
+		  w.findElement(By.name("payGradeCurrency[minSalary]")).sendKeys("50000");
+		  
+		  w.findElement(By.name("payGradeCurrency[maxSalary]")).sendKeys("60000");
+		  
+		  w.findElement(By.name("btnSaveCurrency")).click();
+		  
+		  w.findElement(By.id("menu_leave_viewLeaveModule")).click();
+			
+	       w.findElement(By.id("menu_leave_applyLeave")).click();
+	       
+	       w.findElement(By.id("applyleave_txtLeaveType")).click();
+	       
+	       Select s3 = new Select(w.findElement(By.id("applyleave_txtLeaveType")));
+	       s3.selectByValue("1");
+	       
+	}
+
+}
